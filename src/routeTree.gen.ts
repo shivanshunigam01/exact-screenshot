@@ -18,22 +18,34 @@ import { Route as CustomerRouteImport } from './routes/customer'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as OffersRouteImport } from './routes/offers'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StaffRouteImport } from './routes/staff'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AdminAppointmentsRouteImport } from './routes/admin.appointments'
+import { Route as AdminAuditRouteImport } from './routes/admin.audit'
+import { Route as AdminCalendarRouteImport } from './routes/admin.calendar'
+import { Route as AdminContentRouteImport } from './routes/admin.content'
 import { Route as AdminCustomersRouteImport } from './routes/admin.customers'
+import { Route as AdminGalleryRouteImport } from './routes/admin.gallery'
 import { Route as AdminInvoicesRouteImport } from './routes/admin.invoices'
+import { Route as AdminMarketingRouteImport } from './routes/admin.marketing'
 import { Route as AdminOffersRouteImport } from './routes/admin.offers'
+import { Route as AdminPaymentsRouteImport } from './routes/admin.payments'
 import { Route as AdminReportsRouteImport } from './routes/admin.reports'
 import { Route as AdminReviewsRouteImport } from './routes/admin.reviews'
+import { Route as AdminRolesRouteImport } from './routes/admin.roles'
 import { Route as AdminServicesRouteImport } from './routes/admin.services'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminStaffRouteImport } from './routes/admin.staff'
 import { Route as BookingSuccessRouteImport } from './routes/booking.success'
 import { Route as CustomerBookingsRouteImport } from './routes/customer.bookings'
+import { Route as CustomerFeedbackRouteImport } from './routes/customer.feedback'
+import { Route as CustomerHistoryRouteImport } from './routes/customer.history'
 import { Route as CustomerInvoicesRouteImport } from './routes/customer.invoices'
 import { Route as CustomerProfileRouteImport } from './routes/customer.profile'
+import { Route as CustomerRewardsRouteImport } from './routes/customer.rewards'
 import { Route as ServicesServiceIdRouteImport } from './routes/services.$serviceId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -81,6 +93,11 @@ const OffersRoute = OffersRouteImport.update({
   path: '/offers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsRoute = ReviewsRouteImport.update({
   id: '/reviews',
   path: '/reviews',
@@ -96,9 +113,29 @@ const StaffRoute = StaffRouteImport.update({
   path: '/staff',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminAppointmentsRoute = AdminAppointmentsRouteImport.update({
   id: '/appointments',
   path: '/appointments',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAuditRoute = AdminAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCalendarRoute = AdminCalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/content',
+  path: '/content',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminCustomersRoute = AdminCustomersRouteImport.update({
@@ -106,14 +143,29 @@ const AdminCustomersRoute = AdminCustomersRouteImport.update({
   path: '/customers',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminGalleryRoute = AdminGalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminInvoicesRoute = AdminInvoicesRouteImport.update({
   id: '/invoices',
   path: '/invoices',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminMarketingRoute = AdminMarketingRouteImport.update({
+  id: '/marketing',
+  path: '/marketing',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminOffersRoute = AdminOffersRouteImport.update({
   id: '/offers',
   path: '/offers',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPaymentsRoute = AdminPaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminReportsRoute = AdminReportsRouteImport.update({
@@ -124,6 +176,11 @@ const AdminReportsRoute = AdminReportsRouteImport.update({
 const AdminReviewsRoute = AdminReviewsRouteImport.update({
   id: '/reviews',
   path: '/reviews',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRolesRoute = AdminRolesRouteImport.update({
+  id: '/roles',
+  path: '/roles',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminServicesRoute = AdminServicesRouteImport.update({
@@ -151,6 +208,16 @@ const CustomerBookingsRoute = CustomerBookingsRouteImport.update({
   path: '/bookings',
   getParentRoute: () => CustomerRoute,
 } as any)
+const CustomerFeedbackRoute = CustomerFeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => CustomerRoute,
+} as any)
+const CustomerHistoryRoute = CustomerHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => CustomerRoute,
+} as any)
 const CustomerInvoicesRoute = CustomerInvoicesRouteImport.update({
   id: '/invoices',
   path: '/invoices',
@@ -159,6 +226,11 @@ const CustomerInvoicesRoute = CustomerInvoicesRouteImport.update({
 const CustomerProfileRoute = CustomerProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => CustomerRoute,
+} as any)
+const CustomerRewardsRoute = CustomerRewardsRouteImport.update({
+  id: '/rewards',
+  path: '/rewards',
   getParentRoute: () => CustomerRoute,
 } as any)
 const ServicesServiceIdRoute = ServicesServiceIdRouteImport.update({
@@ -177,22 +249,34 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
   '/offers': typeof OffersRoute
+  '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRouteWithChildren
   '/staff': typeof StaffRoute
+  '/terms': typeof TermsRoute
   '/admin/appointments': typeof AdminAppointmentsRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/calendar': typeof AdminCalendarRoute
+  '/admin/content': typeof AdminContentRoute
   '/admin/customers': typeof AdminCustomersRoute
+  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/invoices': typeof AdminInvoicesRoute
+  '/admin/marketing': typeof AdminMarketingRoute
   '/admin/offers': typeof AdminOffersRoute
+  '/admin/payments': typeof AdminPaymentsRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/reviews': typeof AdminReviewsRoute
+  '/admin/roles': typeof AdminRolesRoute
   '/admin/services': typeof AdminServicesRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/staff': typeof AdminStaffRoute
   '/booking/success': typeof BookingSuccessRoute
   '/customer/bookings': typeof CustomerBookingsRoute
+  '/customer/feedback': typeof CustomerFeedbackRoute
+  '/customer/history': typeof CustomerHistoryRoute
   '/customer/invoices': typeof CustomerInvoicesRoute
   '/customer/profile': typeof CustomerProfileRoute
+  '/customer/rewards': typeof CustomerRewardsRoute
   '/services/$serviceId': typeof ServicesServiceIdRoute
 }
 export interface FileRoutesByTo {
@@ -205,22 +289,34 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
   '/offers': typeof OffersRoute
+  '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRouteWithChildren
   '/staff': typeof StaffRoute
+  '/terms': typeof TermsRoute
   '/admin/appointments': typeof AdminAppointmentsRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/calendar': typeof AdminCalendarRoute
+  '/admin/content': typeof AdminContentRoute
   '/admin/customers': typeof AdminCustomersRoute
+  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/invoices': typeof AdminInvoicesRoute
+  '/admin/marketing': typeof AdminMarketingRoute
   '/admin/offers': typeof AdminOffersRoute
+  '/admin/payments': typeof AdminPaymentsRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/reviews': typeof AdminReviewsRoute
+  '/admin/roles': typeof AdminRolesRoute
   '/admin/services': typeof AdminServicesRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/staff': typeof AdminStaffRoute
   '/booking/success': typeof BookingSuccessRoute
   '/customer/bookings': typeof CustomerBookingsRoute
+  '/customer/feedback': typeof CustomerFeedbackRoute
+  '/customer/history': typeof CustomerHistoryRoute
   '/customer/invoices': typeof CustomerInvoicesRoute
   '/customer/profile': typeof CustomerProfileRoute
+  '/customer/rewards': typeof CustomerRewardsRoute
   '/services/$serviceId': typeof ServicesServiceIdRoute
 }
 export interface FileRoutesById {
@@ -234,22 +330,34 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/login': typeof LoginRoute
   '/offers': typeof OffersRoute
+  '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/services': typeof ServicesRouteWithChildren
   '/staff': typeof StaffRoute
+  '/terms': typeof TermsRoute
   '/admin/appointments': typeof AdminAppointmentsRoute
+  '/admin/audit': typeof AdminAuditRoute
+  '/admin/calendar': typeof AdminCalendarRoute
+  '/admin/content': typeof AdminContentRoute
   '/admin/customers': typeof AdminCustomersRoute
+  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/invoices': typeof AdminInvoicesRoute
+  '/admin/marketing': typeof AdminMarketingRoute
   '/admin/offers': typeof AdminOffersRoute
+  '/admin/payments': typeof AdminPaymentsRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/reviews': typeof AdminReviewsRoute
+  '/admin/roles': typeof AdminRolesRoute
   '/admin/services': typeof AdminServicesRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/staff': typeof AdminStaffRoute
   '/booking/success': typeof BookingSuccessRoute
   '/customer/bookings': typeof CustomerBookingsRoute
+  '/customer/feedback': typeof CustomerFeedbackRoute
+  '/customer/history': typeof CustomerHistoryRoute
   '/customer/invoices': typeof CustomerInvoicesRoute
   '/customer/profile': typeof CustomerProfileRoute
+  '/customer/rewards': typeof CustomerRewardsRoute
   '/services/$serviceId': typeof ServicesServiceIdRoute
 }
 export interface FileRouteTypes {
@@ -264,22 +372,34 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/login'
     | '/offers'
+    | '/privacy'
     | '/reviews'
     | '/services'
     | '/staff'
+    | '/terms'
     | '/admin/appointments'
+    | '/admin/audit'
+    | '/admin/calendar'
+    | '/admin/content'
     | '/admin/customers'
+    | '/admin/gallery'
     | '/admin/invoices'
+    | '/admin/marketing'
     | '/admin/offers'
+    | '/admin/payments'
     | '/admin/reports'
     | '/admin/reviews'
+    | '/admin/roles'
     | '/admin/services'
     | '/admin/settings'
     | '/admin/staff'
     | '/booking/success'
     | '/customer/bookings'
+    | '/customer/feedback'
+    | '/customer/history'
     | '/customer/invoices'
     | '/customer/profile'
+    | '/customer/rewards'
     | '/services/$serviceId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -292,22 +412,34 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/login'
     | '/offers'
+    | '/privacy'
     | '/reviews'
     | '/services'
     | '/staff'
+    | '/terms'
     | '/admin/appointments'
+    | '/admin/audit'
+    | '/admin/calendar'
+    | '/admin/content'
     | '/admin/customers'
+    | '/admin/gallery'
     | '/admin/invoices'
+    | '/admin/marketing'
     | '/admin/offers'
+    | '/admin/payments'
     | '/admin/reports'
     | '/admin/reviews'
+    | '/admin/roles'
     | '/admin/services'
     | '/admin/settings'
     | '/admin/staff'
     | '/booking/success'
     | '/customer/bookings'
+    | '/customer/feedback'
+    | '/customer/history'
     | '/customer/invoices'
     | '/customer/profile'
+    | '/customer/rewards'
     | '/services/$serviceId'
   id:
     | '__root__'
@@ -320,22 +452,34 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/login'
     | '/offers'
+    | '/privacy'
     | '/reviews'
     | '/services'
     | '/staff'
+    | '/terms'
     | '/admin/appointments'
+    | '/admin/audit'
+    | '/admin/calendar'
+    | '/admin/content'
     | '/admin/customers'
+    | '/admin/gallery'
     | '/admin/invoices'
+    | '/admin/marketing'
     | '/admin/offers'
+    | '/admin/payments'
     | '/admin/reports'
     | '/admin/reviews'
+    | '/admin/roles'
     | '/admin/services'
     | '/admin/settings'
     | '/admin/staff'
     | '/booking/success'
     | '/customer/bookings'
+    | '/customer/feedback'
+    | '/customer/history'
     | '/customer/invoices'
     | '/customer/profile'
+    | '/customer/rewards'
     | '/services/$serviceId'
   fileRoutesById: FileRoutesById
 }
@@ -349,9 +493,11 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   LoginRoute: typeof LoginRoute
   OffersRoute: typeof OffersRoute
+  PrivacyRoute: typeof PrivacyRoute
   ReviewsRoute: typeof ReviewsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   StaffRoute: typeof StaffRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -419,6 +565,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OffersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews': {
       id: '/reviews'
       path: '/reviews'
@@ -440,11 +593,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StaffRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/appointments': {
       id: '/admin/appointments'
       path: '/appointments'
       fullPath: '/admin/appointments'
       preLoaderRoute: typeof AdminAppointmentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/audit': {
+      id: '/admin/audit'
+      path: '/audit'
+      fullPath: '/admin/audit'
+      preLoaderRoute: typeof AdminAuditRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/calendar': {
+      id: '/admin/calendar'
+      path: '/calendar'
+      fullPath: '/admin/calendar'
+      preLoaderRoute: typeof AdminCalendarRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/customers': {
@@ -454,6 +635,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminCustomersRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/gallery': {
+      id: '/admin/gallery'
+      path: '/gallery'
+      fullPath: '/admin/gallery'
+      preLoaderRoute: typeof AdminGalleryRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/invoices': {
       id: '/admin/invoices'
       path: '/invoices'
@@ -461,11 +649,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminInvoicesRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/marketing': {
+      id: '/admin/marketing'
+      path: '/marketing'
+      fullPath: '/admin/marketing'
+      preLoaderRoute: typeof AdminMarketingRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/offers': {
       id: '/admin/offers'
       path: '/offers'
       fullPath: '/admin/offers'
       preLoaderRoute: typeof AdminOffersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/payments': {
+      id: '/admin/payments'
+      path: '/payments'
+      fullPath: '/admin/payments'
+      preLoaderRoute: typeof AdminPaymentsRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/reports': {
@@ -480,6 +682,13 @@ declare module '@tanstack/react-router' {
       path: '/reviews'
       fullPath: '/admin/reviews'
       preLoaderRoute: typeof AdminReviewsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/roles': {
+      id: '/admin/roles'
+      path: '/roles'
+      fullPath: '/admin/roles'
+      preLoaderRoute: typeof AdminRolesRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/services': {
@@ -517,6 +726,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CustomerBookingsRouteImport
       parentRoute: typeof CustomerRoute
     }
+    '/customer/feedback': {
+      id: '/customer/feedback'
+      path: '/feedback'
+      fullPath: '/customer/feedback'
+      preLoaderRoute: typeof CustomerFeedbackRouteImport
+      parentRoute: typeof CustomerRoute
+    }
+    '/customer/history': {
+      id: '/customer/history'
+      path: '/history'
+      fullPath: '/customer/history'
+      preLoaderRoute: typeof CustomerHistoryRouteImport
+      parentRoute: typeof CustomerRoute
+    }
     '/customer/invoices': {
       id: '/customer/invoices'
       path: '/invoices'
@@ -531,6 +754,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CustomerProfileRouteImport
       parentRoute: typeof CustomerRoute
     }
+    '/customer/rewards': {
+      id: '/customer/rewards'
+      path: '/rewards'
+      fullPath: '/customer/rewards'
+      preLoaderRoute: typeof CustomerRewardsRouteImport
+      parentRoute: typeof CustomerRoute
+    }
     '/services/$serviceId': {
       id: '/services/$serviceId'
       path: '/$serviceId'
@@ -543,11 +773,18 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminAppointmentsRoute: typeof AdminAppointmentsRoute
+  AdminAuditRoute: typeof AdminAuditRoute
+  AdminCalendarRoute: typeof AdminCalendarRoute
+  AdminContentRoute: typeof AdminContentRoute
   AdminCustomersRoute: typeof AdminCustomersRoute
+  AdminGalleryRoute: typeof AdminGalleryRoute
   AdminInvoicesRoute: typeof AdminInvoicesRoute
+  AdminMarketingRoute: typeof AdminMarketingRoute
   AdminOffersRoute: typeof AdminOffersRoute
+  AdminPaymentsRoute: typeof AdminPaymentsRoute
   AdminReportsRoute: typeof AdminReportsRoute
   AdminReviewsRoute: typeof AdminReviewsRoute
+  AdminRolesRoute: typeof AdminRolesRoute
   AdminServicesRoute: typeof AdminServicesRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminStaffRoute: typeof AdminStaffRoute
@@ -555,11 +792,18 @@ interface AdminRouteChildren {
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminAppointmentsRoute: AdminAppointmentsRoute,
+  AdminAuditRoute: AdminAuditRoute,
+  AdminCalendarRoute: AdminCalendarRoute,
+  AdminContentRoute: AdminContentRoute,
   AdminCustomersRoute: AdminCustomersRoute,
+  AdminGalleryRoute: AdminGalleryRoute,
   AdminInvoicesRoute: AdminInvoicesRoute,
+  AdminMarketingRoute: AdminMarketingRoute,
   AdminOffersRoute: AdminOffersRoute,
+  AdminPaymentsRoute: AdminPaymentsRoute,
   AdminReportsRoute: AdminReportsRoute,
   AdminReviewsRoute: AdminReviewsRoute,
+  AdminRolesRoute: AdminRolesRoute,
   AdminServicesRoute: AdminServicesRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   AdminStaffRoute: AdminStaffRoute,
@@ -580,14 +824,20 @@ const BookingRouteWithChildren =
 
 interface CustomerRouteChildren {
   CustomerBookingsRoute: typeof CustomerBookingsRoute
+  CustomerFeedbackRoute: typeof CustomerFeedbackRoute
+  CustomerHistoryRoute: typeof CustomerHistoryRoute
   CustomerInvoicesRoute: typeof CustomerInvoicesRoute
   CustomerProfileRoute: typeof CustomerProfileRoute
+  CustomerRewardsRoute: typeof CustomerRewardsRoute
 }
 
 const CustomerRouteChildren: CustomerRouteChildren = {
   CustomerBookingsRoute: CustomerBookingsRoute,
+  CustomerFeedbackRoute: CustomerFeedbackRoute,
+  CustomerHistoryRoute: CustomerHistoryRoute,
   CustomerInvoicesRoute: CustomerInvoicesRoute,
   CustomerProfileRoute: CustomerProfileRoute,
+  CustomerRewardsRoute: CustomerRewardsRoute,
 }
 
 const CustomerRouteWithChildren = CustomerRoute._addFileChildren(
@@ -616,9 +866,11 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   LoginRoute: LoginRoute,
   OffersRoute: OffersRoute,
+  PrivacyRoute: PrivacyRoute,
   ReviewsRoute: ReviewsRoute,
   ServicesRoute: ServicesRouteWithChildren,
   StaffRoute: StaffRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, Instagram, Menu, Phone, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { albaImages } from "@/lib/alba-images";
+import { albaImage, imageFallback } from "@/lib/alba-images";
 
 const links = [
   ["About", "/about"],
   ["Treatments", "/services"],
   ["Offers", "/offers"],
-  ["Our space", "/gallery"],
+  ["Gallery", "/gallery"],
+  ["Reviews", "/reviews"],
   ["Contact", "/contact"],
 ] as const;
 
@@ -40,11 +41,11 @@ export function AlbaFooter() {
   return <footer className="dark-panel">
     <div className="alba-wrap grid gap-12 py-14 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr] lg:gap-10 lg:py-20">
       <div><Link to="/" className="inline-flex items-center gap-3 text-ivory no-underline"><span className="grid h-9 w-9 place-items-center border border-champagne/70 font-display text-xl text-champagne">A</span><span className="text-xs tracking-[0.18em]">ALBA WELLNESS</span></Link><p className="mt-5 max-w-xs text-sm leading-7 text-ivory/60">Korean-inspired rituals for a softer pace, a nourished scalp and a more rested you.</p></div>
-      <div><p className="alba-eyebrow">Explore</p><div className="mt-4 grid gap-3">{links.slice(0, 4).map(([label, to]) => <Link key={to} to={to} className="text-sm text-ivory/70 no-underline hover:text-champagne">{label}</Link>)}</div></div>
+      <div><p className="alba-eyebrow">Explore</p><div className="mt-4 grid gap-3">{links.map(([label, to]) => <Link key={to} to={to} className="text-sm text-ivory/70 no-underline hover:text-champagne">{label}</Link>)}<Link to="/privacy" className="text-sm text-ivory/70 no-underline hover:text-champagne">Privacy</Link><Link to="/terms" className="text-sm text-ivory/70 no-underline hover:text-champagne">Terms</Link></div></div>
       <div><p className="alba-eyebrow">Visit us</p><p className="mt-4 text-sm leading-7 text-ivory/70">Ahmedabad, Gujarat<br/>Every day · 10:00 AM–8:00 PM<br/>+91 XXXXX XXXXX</p><Link to="/contact" className="mt-3 inline-block text-xs text-champagne no-underline">Get in touch <ArrowRight className="ml-1 inline size-3" /></Link></div>
       <div><p className="alba-eyebrow">A little note</p><p className="mt-4 text-sm leading-7 text-ivory/70">A private moment of calm, thoughtfully made for you.</p><div className="mt-5 flex gap-4"><a href="https://instagram.com" aria-label="Instagram" className="text-ivory/70 hover:text-champagne"><Instagram className="size-4" /></a><a href="tel:+910000000000" aria-label="Call ALBA WELLNESS" className="text-ivory/70 hover:text-champagne"><Phone className="size-4" /></a></div></div>
     </div>
-    <div className="alba-wrap flex flex-col gap-2 border-t border-ivory/10 py-5 text-[10px] text-ivory/45 sm:flex-row sm:items-center sm:justify-between"><span>© 2026 ALBA WELLNESS. All rights reserved.</span><span>Technology partner <strong className="font-semibold tracking-[0.16em] text-ivory/65">INFIYOURA</strong> · IT SERVICES & DIGITAL SOLUTIONS</span></div>
+    <div className="alba-wrap flex flex-col gap-2 border-t border-ivory/10 py-5 text-[10px] text-ivory/45 sm:flex-row sm:items-center sm:justify-between"><span>© 2026 ALBA WELLNESS. All rights reserved.</span><span>Powered by <strong className="font-semibold tracking-[0.16em] text-ivory/65">INFIYOURA</strong> · IT SERVICES & DIGITAL SOLUTIONS</span></div>
   </footer>;
 }
 
@@ -58,11 +59,14 @@ export function SectionHeading({ eyebrow, title, body, align = "left" }: { eyebr
   return <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}><SectionEyebrow>{eyebrow}</SectionEyebrow><h2 className="editorial-title mt-4 text-5xl sm:text-6xl">{title}</h2>{body && <p className="mt-5 max-w-xl text-sm leading-7 text-muted-foreground">{body}</p>}</div>;
 }
 
+export function AlbaImage({ src, alt, className, width = 1200, height = 1008, eager = false }: { src?: string | null; alt: string; className?: string; width?: number; height?: number; eager?: boolean }) {
+  return <img src={albaImage(src)} width={width} height={height} alt={alt} loading={eager ? "eager" : "lazy"} className={`bg-[#24211d] ${className ?? ""}`} onError={(event) => { if (event.currentTarget.src !== imageFallback) event.currentTarget.src = imageFallback; }} />;
+}
+
 export function AlbaServiceCard({ service, compact = false }: { service: import("@/lib/alba-demo").AlbaService; compact?: boolean }) {
-  const image = albaImages[service.image as keyof typeof albaImages] ?? albaImages.treatment;
   return <article className="group overflow-hidden border border-border bg-card">
-    <Link to="/services/$serviceId" params={{ serviceId: service.id }} className="block overflow-hidden"><div className="aspect-[4/3] overflow-hidden"><img src={image} width={1200} height={1008} loading="lazy" alt={`${service.name} at ALBA WELLNESS`} className="image-zoom h-full w-full object-cover" /></div></Link>
-    <div className="p-5 sm:p-6"><div className="flex items-center justify-between gap-3"><span className="alba-eyebrow">{service.category}</span><span className="text-[11px] text-muted-foreground">{service.duration} min</span></div><h3 className="mt-3 font-display text-3xl leading-tight">{service.name}</h3>{!compact && <p className="mt-3 line-clamp-2 text-sm leading-6 text-muted-foreground">{service.description}</p>}<div className="mt-5 flex items-end justify-between gap-3 border-t border-border pt-4"><div><span className="text-[10px] text-muted-foreground">FROM</span><p className="text-lg font-medium">₹{service.price.toLocaleString("en-IN")}</p></div><Button asChild variant="outline" className="rounded-none border-foreground/25"><Link to="/services/$serviceId" params={{ serviceId: service.id }}>DISCOVER <ArrowRight /></Link></Button></div></div>
+    <Link to="/services/$serviceId" params={{ serviceId: service.id }} className="block overflow-hidden"><div className="aspect-[4/3] overflow-hidden"><AlbaImage src={service.image} alt={`${service.name} at ALBA WELLNESS`} className="image-zoom h-full w-full object-cover" /></div></Link>
+    <div className="p-5 sm:p-6"><div className="flex items-center justify-between gap-3"><span className="alba-eyebrow">{service.category}</span><span className="text-[11px] text-muted-foreground">{service.duration} min</span></div><h3 className="mt-3 font-display text-3xl leading-tight">{service.name}</h3>{!compact && <p className="mt-3 line-clamp-2 text-sm leading-6 text-muted-foreground">{service.description}</p>}<div className="mt-5 flex items-end justify-between gap-3 border-t border-border pt-4"><div><span className="text-[10px] text-muted-foreground">FROM</span><p className="text-lg font-medium">₹{service.price.toLocaleString("en-IN")}</p></div><div className="flex gap-2"><Button asChild variant="outline" className="rounded-none border-foreground/25"><Link to="/services/$serviceId" params={{ serviceId: service.id }}>DETAILS</Link></Button><Button asChild className="rounded-none"><Link to="/booking" search={{ service: service.id }}>BOOK</Link></Button></div></div></div>
   </article>;
 }
 

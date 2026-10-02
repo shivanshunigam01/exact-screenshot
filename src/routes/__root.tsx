@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AlbaDemoProvider } from "@/components/alba-demo-context";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -78,21 +80,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "ALBA WELLNESS | Korean Head Spa & Wellness" },
+      { name: "description", content: "A Korean-inspired head spa experience designed to relax the mind, nourish the scalp and restore your natural balance." },
+      { name: "author", content: "ALBA WELLNESS" },
+      { property: "og:title", content: "ALBA WELLNESS | Korean Head Spa & Wellness" },
+      { property: "og:description", content: "A Korean-inspired head spa experience designed to relax the mind, nourish the scalp and restore your natural balance." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@alba.wellness" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/alba-mark.svg", type: "image/svg+xml" },
     ],
   }),
   shellComponent: RootShell,
@@ -121,7 +123,10 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AlbaDemoProvider>
+        <Outlet />
+        <Toaster position="top-center" />
+      </AlbaDemoProvider>
     </QueryClientProvider>
   );
 }

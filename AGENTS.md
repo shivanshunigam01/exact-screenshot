@@ -1,10 +1,4 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+# Project Architecture Rules
+- Keep the ALBA demo client-side with typed mock data and browser persistence, because the approved product scope explicitly excludes a real backend.
+- Use TanStack file-based routes with a shared Alba experience shell, because public, customer, staff and management views need consistent navigation and direct links.
+- Define brand styling in `src/styles.css` semantic tokens and reusable utilities, because the luxury visual system should remain consistent across all views.
